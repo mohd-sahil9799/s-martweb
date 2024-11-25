@@ -40,7 +40,7 @@ const HomePage = () => {
       {
         breakpoint: 768, // Mobile devices (max-width: 768px)
         settings: {
-          slidesToShow: 3, // Show 2 slides on mobile
+          slidesToShow: 2, // Show 2 slides on mobile
           slidesToScroll: 1,
           infinite: true,
           // dots: true,
@@ -49,7 +49,7 @@ const HomePage = () => {
       {
         breakpoint: 1024, // Tablets (max-width: 1024px)
         settings: {
-          slidesToShow: 3, // Show 3 slides on tablets
+          slidesToShow: 2, // Show 3 slides on tablets
           slidesToScroll: 1,
           infinite: true,
           // dots: true,
