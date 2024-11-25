@@ -56,7 +56,7 @@ const Navigation = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mx-auto d-flex align-items-center justify-content-center">
           {/* Search Form */}
-          <Form inline onSubmit={handleSearch} className="d-flex mx-3 gap-3">
+          {/* <Form inline onSubmit={handleSearch} className="d-flex mx-3 gap-3">
             <FormControl
               type="text"
               placeholder="Search for Product, Brand, and More"
@@ -67,9 +67,9 @@ const Navigation = () => {
             <Button type="submit" variant="outline-success" className="custom-button">
               Search
             </Button>
-          </Form>
-        </Nav>
-        <Nav className="mt-3 mx-5">
+          </Form> */}
+
+<Nav className="mt-3 mx-5">
           {/* Become Seller Button */}
           <Button
             href="http://127.0.0.1:3001/login"
@@ -79,6 +79,8 @@ const Navigation = () => {
             Become Seller
           </Button>
         </Nav>
+        </Nav>
+        
         <Nav className="">
           {token && ( // Conditionally render profile section
             <li style={{ listStyle: 'none' }}>
