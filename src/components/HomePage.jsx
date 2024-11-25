@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Button, Form, FormControl } from 'react-bootstrap';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const HomePage = () => {
       {
         breakpoint: 768, // Mobile devices (max-width: 768px)
         settings: {
-          slidesToShow: 2, // Show 2 slides on mobile
+          slidesToShow: 3, // Show 2 slides on mobile
           slidesToScroll: 1,
           infinite: true,
           // dots: true,
@@ -63,6 +64,7 @@ const HomePage = () => {
       <div className="row my-5">
         <div className="col-12">
           <h2 className="text-center mb-4">Categories</h2>
+       
           <div className="card-container d-flex flex-wrap justify-content-center">
             {adminData?.map((item, index) => (
               <div className="flip-card mx-3 my-2" key={index} onClick={() => subpage(item._id)}>
@@ -116,7 +118,7 @@ const HomePage = () => {
         {BrandData?.map((item, index) => (
           <div key={index}>
             <img
-              className="d-block w-50 px-3 rounded-pill text-center mx-5"
+              className="d-block w-75 px-3 rounded-pill text-center mx-2 px-4"
               src={item?.Brand_image}
               alt={`Brand ${index}`}
               style={{ 

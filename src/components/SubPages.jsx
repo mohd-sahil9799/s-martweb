@@ -39,7 +39,7 @@ const EventPage = () => {
       {
         breakpoint: 768, // Mobile devices (max-width: 768px)
         settings: {
-          slidesToShow: 2, // Show 2 slides on mobile
+          slidesToShow: 3, // Show 2 slides on mobile
           slidesToScroll: 1,
           infinite: true,
           // dots: true,
@@ -115,7 +115,7 @@ const EventPage = () => {
         {BrandData?.map((item, index) => (
           <div key={index}>
             <img
-              className="d-block w-50 px-3 rounded-pill text-center mx-5"
+              className="d-block w-75 px-3 rounded-pill text-center mx-2 px-4"
               src={item?.Brand_image}
               alt={`Brand ${index}`}
               style={{ 
