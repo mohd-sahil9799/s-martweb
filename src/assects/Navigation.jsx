@@ -79,6 +79,7 @@ const Navigation = () => {
             Become Seller
           </Button>
         </Nav>
+        
         </Nav>
         
         <Nav className="">
