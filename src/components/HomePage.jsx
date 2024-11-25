@@ -4,12 +4,15 @@ import { getVenderProduct } from '../Slice/VenderSlice';
 import { getadminCategory, getadminBrand } from '../Slice/AdminSlice';
 import '../App.css'; // Import your custom styles
 import { useNavigate, useParams } from 'react-router-dom';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const { venderData } = useSelector((state) => state.vendor);
   const { adminData, BrandData } = useSelector((state) => state.Admin);
-  
+
   useEffect(() => {
     dispatch(getVenderProduct());
     dispatch(getadminCategory());
@@ -17,11 +20,43 @@ const HomePage = () => {
   }, [dispatch]);
 
 
-  const id=useParams()
-  const navigate=useNavigate()
+  const id = useParams()
+  const navigate = useNavigate()
   const subpage = (id) => {
-    navigate(`/category/${id}`); 
+    navigate(`/category/${id}`);
   };
+
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4, // Default number of visible slides
+    slidesToScroll: 1, // Number of slides to scroll
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 768, // Mobile devices (max-width: 768px)
+        settings: {
+          slidesToShow: 2, // Show 2 slides on mobile
+          slidesToScroll: 1,
+          infinite: true,
+          // dots: true,
+        },
+      },
+      {
+        breakpoint: 1024, // Tablets (max-width: 1024px)
+        settings: {
+          slidesToShow: 3, // Show 3 slides on tablets
+          slidesToScroll: 1,
+          infinite: true,
+          // dots: true,
+        },
+      },
+    ],
+  };
+  
   return (
     <div className="container-fluid">
       {/* Categories Section */}
@@ -41,7 +76,7 @@ const HomePage = () => {
                     <h5 className="mt-2">{item?.name}</h5>
                   </div>
                   <div className="flip-card-back">
-                  <img
+                    <img
                       src={item?.product_image}
                       alt={item?.name}
                       className="img-fluid category-image"
@@ -55,21 +90,43 @@ const HomePage = () => {
       </div>
 
       {/* Brands Section */}
-     <div className="container-fluid">
-     <div className="row my-5">
-        <div className="col-12">
-          <h2 className="text-center mb-4">Brands</h2>
-          <div class="slider">
-  <div class="slide-track">
-    {BrandData?.map((item, index) => (
- <div class="slide" key={index}>
- <img src={item?.Brand_image} height="100" width="200" alt="" />
-</div>            ))}
-  </div>
-</div>
+      {/* <div className="container">
+  <div className="row my-5">
+    <div className="col-lg-4 col-md-6 col-sm-12">
+      <h2 className="text-center mb-4">Brands</h2>
+      <div className="slider">
+        <div className="slide-track d-flex align-items-center justify-content-center flex-wrap">
+          {BrandData?.map((item, index) => (
+            <div className="slide" key={index}>
+              <img
+                src={item?.Brand_image}
+                alt={`Brand ${index}`}
+                className="img-fluid"
+              />
+            </div>
+          ))}
         </div>
       </div>
-     </div>
+    </div>
+  </div>
+</div> */}
+
+<div className="carousel-container mx-5"style={{overflow:"hidden"}} >
+      <Slider {...settings}>
+        {BrandData?.map((item, index) => (
+          <div key={index}>
+            <img
+              className="d-block w-50 px-3 rounded-pill text-center mx-5"
+              src={item?.Brand_image}
+              alt={`Brand ${index}`}
+              style={{ 
+                objectFit: "cover",
+              }}
+            />
+          </div>
+        ))}
+      </Slider>
+    </div>
 
 
 

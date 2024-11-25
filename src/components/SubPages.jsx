@@ -4,6 +4,11 @@ import { getVenderProduct } from '../Slice/VenderSlice';
 import { getadminCategory, getadminBrand } from '../Slice/AdminSlice';
 import '../App.css'; // Import your custom styles
 import { useNavigate, useParams } from 'react-router-dom';
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const EventPage = () => {
   const dispatch = useDispatch();
   const { adminData, BrandData } = useSelector((state) => state.Admin);
@@ -20,6 +25,36 @@ const EventPage = () => {
   const navigate = useNavigate()
   const singlepage = (id) => {
     navigate(`/product/${id}`);
+  };
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4, // Default number of visible slides
+    slidesToScroll: 1, // Number of slides to scroll
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 768, // Mobile devices (max-width: 768px)
+        settings: {
+          slidesToShow: 2, // Show 2 slides on mobile
+          slidesToScroll: 1,
+          infinite: true,
+          // dots: true,
+        },
+      },
+      {
+        breakpoint: 1024, // Tablets (max-width: 1024px)
+        settings: {
+          slidesToShow: 3, // Show 3 slides on tablets
+          slidesToScroll: 1,
+          infinite: true,
+          // dots: true,
+        },
+      },
+    ],
   };
   return (
     <div>
@@ -75,21 +110,22 @@ const EventPage = () => {
       </div>
 
 
-      <div className="container-fluid">
-        <div className="row mt-5">
-          <div className="col-12">
-            <h2 className="text-center mb-4">Brands</h2>
-            <div class="slider">
-              <div class="slide-track">
-                {BrandData?.map((item, index) => (
-                  <div class="slide" key={index}>
-                    <img src={item?.Brand_image} height="100" width="200" alt="" />
-                  </div>))}
-              </div>
-            </div>
+      <div className="carousel-container mx-5"style={{overflow:"hidden"}} >
+      <Slider {...settings}>
+        {BrandData?.map((item, index) => (
+          <div key={index}>
+            <img
+              className="d-block w-50 px-3 rounded-pill text-center mx-5"
+              src={item?.Brand_image}
+              alt={`Brand ${index}`}
+              style={{ 
+                objectFit: "cover",
+              }}
+            />
           </div>
-        </div>
-      </div>
+        ))}
+      </Slider>
+    </div>
     </div>
   )
 }

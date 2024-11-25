@@ -65,7 +65,7 @@ const Navigation = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <Button type="submit" variant="outline-success" className="custom-button">
-              Find
+              Search
             </Button>
           </Form>
         </Nav>
