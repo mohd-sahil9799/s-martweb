@@ -113,7 +113,10 @@ const HomePage = () => {
   </div>
 </div> */}
 
+<h2 className="text-center mb-4">Brands</h2>
+
 <div className="carousel-container mx-5"style={{overflow:"hidden"}} >
+
       <Slider {...settings}>
         {BrandData?.map((item, index) => (
           <div key={index}>

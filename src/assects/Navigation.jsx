@@ -69,13 +69,12 @@ const Navigation = () => {
             </Button>
           </Form>
         </Nav>
-        <Nav className="ml-auto mx-5">
+        <Nav className="mt-3 mx-5">
           {/* Become Seller Button */}
           <Button
             href="http://127.0.0.1:3001/login"
             target="_blank"
-            className="fs-5 custom-button"
-            variant="primary"
+            className="fs-5 "
           >
             Become Seller
           </Button>

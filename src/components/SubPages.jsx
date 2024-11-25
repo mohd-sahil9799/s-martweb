@@ -109,6 +109,7 @@ const EventPage = () => {
         {/* Brands Section */}
       </div>
 
+      <h2 className="text-center mb-4">Brands</h2>
 
       <div className="carousel-container mx-5"style={{overflow:"hidden"}} >
       <Slider {...settings}>
